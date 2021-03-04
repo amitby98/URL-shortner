@@ -1,11 +1,11 @@
 1. Create /api/shorturl/new POST endpoint
-	A. get the body from the request and get the longUrl
-	B. validate longUrl is really exists + is valid (do after)
-	C. check if longUrl is already exists in our DB 
-	(db.checkExists(longUrl) ->true/false)
+	A. get the body from the request and get the fullUrl
+	B. validate fullUrl is really exists + is valid (do after)
+	C. check if fullUrl is already exists in our DB 
+	(db.checkExists(fullUrl) ->true/false)
 	D. If exists -> return the shortUrl to the response
 	E. if not exists, create a new shortUrl
-	db.createShortUrl(longUrl) -> shorturl
+	db.createShortUrl(fullUrl) -> shorturl
 return the shortUrl to the response
     
 
@@ -24,18 +24,18 @@ api/statistic/:shorturl-i
 class Database{
 	counter.txt -> in this file we will save the counter
 	short urls folders -> contains shorturl files
-	long urls folder -> contains longurl files
+	full urls folder -> contains fullurl files
 
 
-	createShortUrl(longUrl)
+	createShortUrl(fullUrl)
 1.	number = read the number in the counter.txt
 2.	number ++
 3.	save number to counter.txt (replace the old number)
 4.	create shortUrlObject {date, counter(0), origianalUrl, shortUrl)
 5.	write new file "{number}.txt" -> shortUrlObject
-6.	write new file "{longUrl}.txt" -> shorturl
+6.	write new file "{fullUrl}.txt" -> shorturl
 7.	return number
 
-checkExists(longUrl)
-1.	check if there is a file names "{longUrl}.txt" if exists return true, if not return false
+checkExists(fullUrl)
+1.	check if there is a file names "{fullUrl}.txt" if exists return true, if not return false
 }
