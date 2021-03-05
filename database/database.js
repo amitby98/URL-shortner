@@ -1,10 +1,10 @@
-class Database(){
-this.
-}
+class Database{
+  constructor() {}
 
-function writeURL(url) { }
+//  writeURL(url) { }
 
-function checkExists(fullUrl) {
+  checkExists(fullUrl) {
+   const database = `./database/DB.json`
   if (database.checkExists({ fullUrl }.json)) {
     return true;
   } else {
@@ -12,17 +12,18 @@ function checkExists(fullUrl) {
   }
 }
 
-function isExists((req, res) => {
+ isExists((req, res) => {
     if (fullUrl === true) {
         return res.shortUrl;
     } else {
+      createShortUrl();
     }
 });
 
-function getUrl(url) {}
+ getUrl(url) {}
 
-// function createShortUrl(fullUrl) {
-//   const number = fs.readFileSync(`./database/counter.json`);
+function createShortUrl(fullUrl) {
 
-//  }
+ }
 
+}

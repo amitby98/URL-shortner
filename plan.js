@@ -12,8 +12,8 @@ return the shortUrl to the response
 
 
 2. GET /{shorturl}
-	1. check if file exists "{shortUrl}.txt" -> if not, redirect to 404.html
-	2. if exists -> read file "{shorturl}.txt" -> increase counter in shortUrlObject -> save shortUrlObject file -> redirect to the shortUrlObject.originalUrl
+	1. check if file exists "{shortUrl}.json" -> if not, redirect to 404.html
+	2. if exists -> read file "{shorturl}.json" -> increase counter in shortUrlObject -> save shortUrlObject file -> redirect to the shortUrlObject.originalUrl
 
 
 
@@ -32,10 +32,10 @@ class Database{
 2.	number ++
 3.	save number to counter.txt (replace the old number)
 4.	create shortUrlObject {date, counter(0), origianalUrl, shortUrl)
-5.	write new file "{number}.txt" -> shortUrlObject
-6.	write new file "{fullUrl}.txt" -> shorturl
+5.	write new file "{number}.json" -> shortUrlObject
+6.	write new file "{fullUrl}.json" -> shorturl
 7.	return number
 
 checkExists(fullUrl)
-1.	check if there is a file names "{fullUrl}.txt" if exists return true, if not return false
+1.	check if there is a file names "{fullUrl}.json" if exists return true, if not return false
 }

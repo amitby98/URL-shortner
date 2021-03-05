@@ -5,7 +5,6 @@ const app = express();
 const fs = require("fs");
 
 app.use(cors());
-
 app.use(express.json());
 app.use(express.urlencoded());
 
@@ -20,7 +19,6 @@ app.post("/api/shorturl/new", async (req, res) => {
     return res.status(422).json({ message: "Not a valid url" });
   }
   let jsonContent = JSON.stringify(req.body);
-  // console.log(jsonContent);
   fs.writeFile(`./database/DB.json`, jsonContent, "utf8", function (err) {
     if (err) {
       console.log("An error occur while writing JSON Object to File.");
@@ -34,7 +32,7 @@ app.post("/api/shorturl/new", async (req, res) => {
 app.get("/api/shorturl/new", (req, res) => {
   fs.readFile("./database/DB.json", "utf8", (err, data) => {
     if (err) {
-      res.status(422).json({ message: "Not a valid!!!!" });
+      res.status(404).json({ message: "Not found!" });
       return;
     }
     res.send(data);
