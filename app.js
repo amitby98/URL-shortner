@@ -9,8 +9,8 @@ const database = new Database();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());
+
 app.use("/public", express.static(`./public`));
-// app.use("/", express.static(`./views`));
 
 app.post("/api/shorturl/new", async (req, res) => {
   const fullUrl = req.body.url;
@@ -39,6 +39,14 @@ function isUrl(text) {
 
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/views/index.html");
+});
+
+app.get("/:id", (req, res) => {
+  const id = req.params.id.replace(":", "");
+  let obj = database.getObjById(id);
+  if (obj !== -1) {
+    res.redirect(303, obj.fullUrl);
+  }
 });
 
 module.exports = app;

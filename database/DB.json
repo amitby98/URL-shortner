@@ -1,1 +1,5 @@
-[{"idcount":2},{"shorturl":1,"fullUrl":"https://www.google.com"},{"shorturl":2,"fullUrl":"https://github.com/Niv200"}]
+[
+  { "idcount": 2 },
+  { "shorturl": 1, "fullUrl": "https://www.google.com" },
+  { "shorturl": 2, "fullUrl": "https://github.com/Niv200" }
+]
