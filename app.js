@@ -20,7 +20,7 @@ app.post("/api/shorturl/new", async (req, res) => {
       database.saveDatabase();
       res.json(database.createLinkObj(fullUrl, true));
     } else {
-      res.json(database.getObjById(fullUrl));
+      res.json(database.getObjByUrl(fullUrl));
     }
   } else {
     res.json({ error: "URL is not valid!" });
@@ -46,9 +46,8 @@ app.get("/:id", (req, res) => {
   let obj = database.getObjById(id);
   if (obj !== -1) {
     res.redirect(303, obj.fullUrl);
+    database.updateClicks(id);
   }
 });
 
 module.exports = app;
-
-function containURL(urlToCheck) {}

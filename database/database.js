@@ -48,17 +48,32 @@ class Database {
   createLinkObj(url, flag) {
     let obj;
     if (!flag) {
-      obj = { shorturl: this.getNewId(), fullUrl: url };
+      obj = {
+        shorturl: this.getNewId(),
+        fullUrl: url,
+        createdAt: new Date(),
+        clicks: 0,
+      };
     } else {
-      obj = { shorturl: this.getIdByLink(url), fullUrl: url };
+      obj = this.getObjByUrl(url);
     }
     return obj;
+  }
+
+  getClicks(id) {
+    return this.getObjById(id).clicks;
+  }
+
+  updateClicks(id) {
+    let click = this.getClicks(id) + 1;
+    this.getObjById(id).clicks = click;
+    this.saveDatabase();
   }
 
   getIdByLink(url) {
     for (let i in database) {
       if (database[i].fullUrl === url) {
-        return database[i].shorturl;
+        return database[i];
       }
     }
     return -1;
@@ -71,6 +86,15 @@ class Database {
   getObjById(id) {
     for (let i in database) {
       if (database[i].shorturl == id) {
+        return database[i];
+      }
+    }
+    return -1;
+  }
+
+  getObjByUrl(url) {
+    for (let i in database) {
+      if (database[i].fullUrl == url) {
         return database[i];
       }
     }
