@@ -1,0 +1,12 @@
+<html>
+  <h1>Your short url</h1>
+  <a id="link" target="_blank"></a>
+  <script type="text/javascript">
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const shortUrl = urlParams.get("shortUrl");
+    const url = "http://localhost:3000/" + shortUrl;
+    document.getElementById("link").innerHTML = url;
+    document.getElementById("link").href = url;
+  </script>
+</html>

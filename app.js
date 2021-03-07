@@ -1,6 +1,7 @@
 require("dotenv").config();
 const fs = require("fs");
 const express = require("express");
+const urlExists = require("url-exists");
 const cors = require("cors");
 const { captureRejectionSymbol } = require("events");
 const app = express();
@@ -11,17 +12,25 @@ app.use(express.json());
 app.use(express.urlencoded());
 
 app.use("/public", express.static(`./public`));
+app.use(express.static(__dirname + "/views"));
 
 app.post("/api/shorturl/new", async (req, res) => {
   const fullUrl = req.body.url;
   if (isUrl(fullUrl)) {
-    if (database.checkIfExists(fullUrl) === -1) {
-      database.addNewLink(fullUrl);
-      database.saveDatabase();
-      res.json(database.createLinkObj(fullUrl, true));
-    } else {
-      res.json(database.getObjByUrl(fullUrl));
-    }
+    urlExists(fullUrl, function (err, exists) {
+      if (exists) {
+        if (database.checkIfExists(fullUrl) === -1) {
+          database.addNewLink(fullUrl);
+          database.saveDatabase();
+          res.json(database.createLinkObj(fullUrl, true));
+        } else {
+          res.json(database.getObjByUrl(fullUrl));
+        }
+      } else {
+        // go to 404 page
+        res.json({ message: "not found page" });
+      }
+    });
   } else {
     res.json({ error: "URL is not valid!" });
   }
