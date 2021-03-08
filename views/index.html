@@ -5,11 +5,13 @@
     <title>URL Shortener</title>
     <link rel="icon" type="image/png" href="../public/favicon.ico" />
     <link href="./public/style.css" rel="stylesheet" type="text/css" />
-    <script src="./main.js"></script>
+    <link href="../public/style.scss" rel="stylesheet" type="text/css" />
   </head>
 
   <body>
     <h1>URL Shortener Microservice</h1>
+    <h2>Your shortened URL👇</h2>
+    <a id="link" target="_blank"></a>
     <main>
       <section>
         <form onsubmit="return false;">
@@ -31,9 +33,35 @@
           </fieldset>
         </form>
       </section>
+      <button id="statistic" type="submit" onclick="gotoStats()">
+        Statistic
+      </button>
     </main>
-    <footer>
-      <p>By <a href="https://www.freecodecamp.org/">freeCodeCamp</a></p>
-    </footer>
+    <div class="tables" id="tables">
+      <h1 class="table-header">Table Score</h1>
+      <section id="first-table">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>ShortUrls</th>
+              <th>FullUrls</th>
+              <th>CreatedAt</th>
+              <th>Clicks</th>
+            </tr>
+          </thead>
+          <tbody id="url-statistic"></tbody>
+        </table>
+      </section>
+    </div>
+    <div id="footer">
+      <footer>
+        <a href="https://github.com/amitby98" target="_blank"
+          >amit ben yaakov</a
+        >
+        <!-- <a href="https://github.com/amitby98" target="_blank"
+            >Github</a> -->
+      </footer>
+    </div>
   </body>
+  <script src="./main.js"></script>
 </html>

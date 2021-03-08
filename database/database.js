@@ -70,6 +70,15 @@ class Database {
     this.saveDatabase();
   }
 
+  getDatabase() {
+    let ids = database[0].idcount;
+    let arr = [];
+    for (let i = 1; i < ids; i++) {
+      arr.push(database[i]);
+    }
+    return arr;
+  }
+
   getIdByLink(url) {
     for (let i in database) {
       if (database[i].fullUrl === url) {

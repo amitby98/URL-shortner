@@ -27,8 +27,7 @@ app.post("/api/shorturl/new", async (req, res) => {
           res.json(database.getObjByUrl(fullUrl));
         }
       } else {
-        // go to 404 page
-        res.json({ message: "not found page" });
+        res.json({ message: "Page not found " });
       }
     });
   } else {
@@ -57,6 +56,11 @@ app.get("/:id", (req, res) => {
     res.redirect(303, obj.fullUrl);
     database.updateClicks(id);
   }
+});
+
+app.get("/api/stats", (req, res) => {
+  let data = database.getDatabase();
+  res.json(200, data);
 });
 
 module.exports = app;
