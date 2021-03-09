@@ -1,0 +1,35 @@
+@import "https://fonts.googleapis.com/css?family=Inconsolata";
+
+html {
+  min-height: 100%;
+}
+
+body {
+  box-sizing: border-box;
+  height: 100vh;
+  font-family: "Inconsolata", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  background-image: url(../public/featured-404-error-image.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+#goBack {
+  position: absolute;
+  bottom: 11.2rem;
+  right: 13rem;
+  font-size: 2.5rem;
+  text-decoration: none;
+  color: rgb(55, 55, 112);
+  background-color: white;
+}
+
+.terminal {
+  position: absolute;
+  right: 6rem;
+  font-size: 2rem;
+  line-height: 2.2rem;
+  color: rgb(58, 56, 56);
+  font-weight: bold;
+}
